@@ -10,13 +10,23 @@ class Counter:
             self._value = 0
 
     # TODO перепишите get_value и сделайте его свойством (getter) value
-    def get_value(self) -> int:
+    @property
+    def value(self) -> int:
         return self._value
 
     # TODO  напишите свойство (getter) max_value
+    @property
+    def max_value(self):
+        return self._max_value
 
     # TODO  напишите свойство (setter) max_value с проверками на входной тип и значение
-
+    @max_value.setter
+    def max_value(self, value):
+        if not isinstance(value, int):
+            raise TypeError("Максимальное значение должно быть положительным числом")
+        if value < 1:
+            raise ValueError("Максимальное значение должно быть больше 1")
+        self._max_value = value
 
 if __name__ == "__main__":
     counter = Counter(5)

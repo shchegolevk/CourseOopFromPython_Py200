@@ -40,8 +40,12 @@ class SavingsAccount(BankAccount):
         rate — это процентная ставка (в десятичных дробях).
         Например, если процентная ставка 5%, то передается значение 0.05
         """
-        ...  # TODO реализуйте метод
-
+        # TODO реализуйте метод
+        if not isinstance(rate, float):
+            raise TypeError('Процентная ставка должна иметь тип float')
+        if rate < 0:
+            raise ValueError('Процентная ставка должна быть положительна')
+        self.deposit(self.get_balance() * rate/100)
 
 class CheckingAccount(BankAccount):
     """
@@ -51,10 +55,15 @@ class CheckingAccount(BankAccount):
 
     def withdraw(self, amount):
         """
-        amount - сумма для вывода
+        amount - сумма для снятия
         """
-        ...  # TODO Реализуйте метод
-
+        # TODO Реализуйте метод
+        if not isinstance(amount, (float, int)):
+            raise TypeError('Сумма снятия должна иметь тип float или int')
+        if amount <= 0:
+            raise ValueError('Сумма снятия должна быть положительна')
+        if self.get_balance() >= amount * (1 + self.__commission):
+            self._set_balance(self.get_balance() - amount * (1 + self.__commission))
 
 if __name__ == "__main__":
     # Пример использования

@@ -4,11 +4,13 @@ class Counter:
         self._max_value = max_value
 
     def increment(self) -> None:
-        ...  # TODO допишите метод
-
+        # TODO допишите метод
+        self._value += 1
+        if self._value > self._max_value:
+            self._value = 0
     def get_value(self) -> int:
-        ...  # TODO допишите метод
-
+        # TODO допишите метод
+        return self._value
 
 if __name__ == "__main__":
     counter = Counter(5)

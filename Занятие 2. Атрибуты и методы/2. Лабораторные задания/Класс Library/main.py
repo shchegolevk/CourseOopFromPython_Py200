@@ -1,4 +1,6 @@
 # База данных книг для проверки
+from typing import List
+
 BOOKS_DATABASE = [
     {
         "id": 1,
@@ -12,9 +14,20 @@ BOOKS_DATABASE = [
     }
 ]
 
-
 # TODO Импортируйте и скопируйте ранее написанный класс Book
+class Book:
+    def __init__(self, id_, name, pages):
+        # pass # TODO дописать метод
+        self.id = id_
+        self.name = name
+        self.pages = pages
 
+    def __str__(self):
+        # pass # TODO дописать метод
+        return f'Книга "{self.name}"'
+    def __repr__(self):
+        #pass # TODO дописать метод
+        return f"{self.__class__.__name__}(id_={str(self.id)}, name='{self.name}', pages={str(self.pages)})"
 
 class Library:
 
@@ -24,7 +37,13 @@ class Library:
         его не передал, то библиотека инициализируется с пустым списком книг.'
         :param books:
         """
-        pass # TODO дописать метод
+        # pass # TODO дописать метод
+        if books is None:
+            self.books = []
+        elif isinstance(books, List):
+           self.books = books
+        else:
+            raise TypeError("При создании библиотеки должен быть передан список книг или None")
 
     def get_next_book_id(self):
         """
@@ -34,16 +53,18 @@ class Library:
         """
         pass # TODO дописать метод
 
+        return max(self.books, key=lambda x: x['id']) + 1 # max(data, key=lambda x: x['price'])
+
     def get_index_by_book_id(self, id_):
         """
-        Так как в библиотеке книги хранятся в списке, то данная функция возвращает индекс где книга с определенным
+        Так как в библиотеке книги хранятся в списке, то данная функция возвращает индекс, где книга с определенным
         `id` хранится в списке книг. Для примера. [Book(id=1, ...), Book(id=2, ...)] книга с id=2 хранится
         на индексе 1 списка книг
         :param id_: id книги
         :return: индекс, где лежит книга в списке книг
         """
         pass # TODO дописать метод
-
+        self.books.index()
 
 if __name__ == '__main__':
     empty_library = Library()  # инициализируем пустую библиотеку

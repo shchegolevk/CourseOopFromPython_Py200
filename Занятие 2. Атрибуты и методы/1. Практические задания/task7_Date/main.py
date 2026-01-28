@@ -1,13 +1,21 @@
 class Date:
     def __init__(self, day: int, month: int, year: int):
         # TODO Инициализируйте переменные с проверкой соответствия типа, если не соответствует, то вызывайте ошибку TypeError
-
+        if not isinstance(day, int):
+            raise TypeError("День должен быть типа int")
+        if not isinstance(month, int):
+            raise TypeError("Месяц должен быть типа int")
+        if not isinstance(year, int):
+            raise TypeError("Год должен быть типа int")
+        self.day = day
+        self.month = month
+        self.year = year
     def __str__(self):
         ... # TODO Реализуйте возвращение в формате DD/MM/YYYY
-
+        return f'{self.day:02}' + "/" + f'{self.month:02}' + "/" + str(self.year)
     def __repr__(self):
         ... # TODO Реализуйте возвращение в формате Date(day=..., month=..., year=...)
-
+        return Date.__name__ + '(day='+ str(self.day) + ', month=' + str(self.month) + ', year=' + str(self.year) + ')'
 
 if __name__ == "__main__":
     date1 = Date(1, 1, 2021)
