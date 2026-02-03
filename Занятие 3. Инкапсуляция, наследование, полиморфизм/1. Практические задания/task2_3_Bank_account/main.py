@@ -45,7 +45,7 @@ class SavingsAccount(BankAccount):
             raise TypeError('Процентная ставка должна иметь тип float')
         if rate < 0:
             raise ValueError('Процентная ставка должна быть положительна')
-        self.deposit(self.get_balance() * rate/100)
+        self.deposit(self.get_balance() * rate)
 
 class CheckingAccount(BankAccount):
     """

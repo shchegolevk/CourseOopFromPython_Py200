@@ -31,7 +31,7 @@ class Book:
 
 class Library:
 
-    def __init__(self, books):
+    def __init__(self, books=None):
         """
         Не забудьте про 'Конструктор должен принимать необязательный аргумент со значением по умолчанию. Если пользователь
         его не передал, то библиотека инициализируется с пустым списком книг.'
@@ -52,8 +52,14 @@ class Library:
         :return:
         """
         pass # TODO дописать метод
-
-        return max(self.books, key=lambda x: x['id']) + 1 # max(data, key=lambda x: x['price'])
+        if not self.books:
+            return 1
+        else:
+            i = 0
+            for b in self.books:
+                if i < b.id:
+                    i = b.id
+            return i + 1
 
     def get_index_by_book_id(self, id_):
         """
@@ -64,7 +70,9 @@ class Library:
         :return: индекс, где лежит книга в списке книг
         """
         pass # TODO дописать метод
-        self.books.index()
+        for i in range(len(self.books)):
+            if self.books[i].id == id_:
+                return i
 
 if __name__ == '__main__':
     empty_library = Library()  # инициализируем пустую библиотеку
