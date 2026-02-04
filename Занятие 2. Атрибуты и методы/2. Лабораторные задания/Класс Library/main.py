@@ -52,6 +52,7 @@ class Library:
         :return:
         """
         pass # TODO дописать метод
+        # Наверно, можно как-то и проще, чем циклом
         if not self.books:
             return 1
         else:
@@ -70,6 +71,7 @@ class Library:
         :return: индекс, где лежит книга в списке книг
         """
         pass # TODO дописать метод
+        # Здесь тоже наверно, можно как-то и проще, чем циклом, но иначе не придумал
         for i in range(len(self.books)):
             if self.books[i].id == id_:
                 return i
